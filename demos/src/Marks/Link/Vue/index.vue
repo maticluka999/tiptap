@@ -1,10 +1,10 @@
 <template>
   <div v-if="editor">
-    <button @click="setCustomLink" :class="{ 'is-active': editor.isActive('link') }">
-      setCustomLink
+    <button @click="setLink" :class="{ 'is-active': editor.isActive('link') }">
+      setLink
     </button>
-    <button @click="editor.chain().focus().unsetCustomLink().run()" :disabled="!editor.isActive('link')">
-      unsetCustomLink
+    <button @click="editor.chain().focus().unsetLink().run()" :disabled="!editor.isActive('link')">
+      unsetLink
     </button>
     <editor-content :editor="editor" />
   </div>
@@ -52,7 +52,7 @@ export default {
   },
 
   methods: {
-    setCustomLink() {
+    setLink() {
       const previousUrl = this.editor.getAttributes('link').href
       const url = window.prompt('URL', previousUrl)
 
@@ -67,7 +67,7 @@ export default {
           .chain()
           .focus()
           .extendMarkRange('link')
-          .unsetCustomLink()
+          .unsetLink()
           .run()
 
         return
@@ -78,7 +78,7 @@ export default {
         .chain()
         .focus()
         .extendMarkRange('link')
-        .setCustomLink({ href: url })
+        .setLink({ href: url })
         .run()
     },
   },

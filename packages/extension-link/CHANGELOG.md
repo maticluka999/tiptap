@@ -472,7 +472,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* allow to remove autolinks with unsetCustomLink ([ea10ffb](https://github.com/ueberdosis/tiptap/commit/ea10ffbc6a0f447c33680dcc6f6dc2fa6337c4c2))
+* allow to remove autolinks with unsetLink ([ea10ffb](https://github.com/ueberdosis/tiptap/commit/ea10ffbc6a0f447c33680dcc6f6dc2fa6337c4c2))
 
 
 

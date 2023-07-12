@@ -33,6 +33,14 @@ export interface LinkOptions {
    */
   HTMLAttributes: Record<string, any>
   /**
+   * A list of HTML attributes to be rendered for ones with ignored value.
+   */
+  HTMLAttributesForIgnored: Record<string, any>
+  /**
+   * A list of HTML attributes to be rendered for ones with ignored value.
+   */
+  hrefToIgnore?: string
+  /**
    * A validation function that modifies link verification for the auto linker.
    * @param url - The url to be validated.
    * @returns - True if the url is valid, false otherwise.
@@ -46,15 +54,15 @@ declare module '@tiptap/core' {
       /**
        * Set a link mark
        */
-      setCustomLink: (attributes: { href: string; target?: string | null }) => ReturnType
+      setLink: (attributes: { href: string; target?: string | null }) => ReturnType
       /**
        * Toggle a link mark
        */
-      toggleCustomLink: (attributes: { href: string; target?: string | null }) => ReturnType
+      toggleLink: (attributes: { href: string; target?: string | null }) => ReturnType
       /**
        * Unset a link mark
        */
-      unsetCustomLink: () => ReturnType
+      unsetLink: () => ReturnType
     }
   }
 }
@@ -95,6 +103,12 @@ export const Link = Mark.create<LinkOptions>({
         rel: 'noopener noreferrer nofollow',
         class: null,
       },
+      HTMLAttributesForIgnored: {
+        target: '_blank',
+        rel: 'noopener noreferrer nofollow',
+        class: null,
+      },
+      hrefToIgnore: undefined,
       validate: undefined,
     }
   },
@@ -120,18 +134,24 @@ export const Link = Mark.create<LinkOptions>({
     return [{ tag: 'a[href]:not([href *= "javascript:" i])' }]
   },
 
-  renderHTML({ HTMLAttributes }) {
+  renderHTML({ HTMLAttributes, mark }) {
+    const { href } = mark.attrs
+
+    if (href === this.options.hrefToIgnore) {
+      return ['a', mergeAttributes(this.options.HTMLAttributesForIgnored, HTMLAttributes), 0]
+    }
+
     return ['a', mergeAttributes(this.options.HTMLAttributes, HTMLAttributes), 0]
   },
 
   addCommands() {
     return {
-      setCustomLink:
+      setLink:
         attributes => ({ chain }) => {
           return chain().setMark(this.name, attributes).setMeta('preventAutolink', true).run()
         },
 
-      toggleCustomLink:
+      toggleLink:
         attributes => ({ chain }) => {
           return chain()
             .toggleMark(this.name, attributes, { extendEmptyMarkRange: true })
@@ -139,7 +159,7 @@ export const Link = Mark.create<LinkOptions>({
             .run()
         },
 
-      unsetCustomLink:
+      unsetLink:
         () => ({ chain }) => {
           return chain()
             .unsetMark(this.name, { extendEmptyMarkRange: true })
