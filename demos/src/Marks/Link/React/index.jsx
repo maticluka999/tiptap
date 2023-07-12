@@ -29,7 +29,7 @@ export default () => {
       `,
   })
 
-  const setLink = useCallback(() => {
+  const setCustomLink = useCallback(() => {
     const previousUrl = editor.getAttributes('link').href
     const url = window.prompt('URL', previousUrl)
 
@@ -40,14 +40,14 @@ export default () => {
 
     // empty
     if (url === '') {
-      editor.chain().focus().extendMarkRange('link').unsetLink()
+      editor.chain().focus().extendMarkRange('link').unsetCustomLink()
         .run()
 
       return
     }
 
     // update link
-    editor.chain().focus().extendMarkRange('link').setLink({ href: url })
+    editor.chain().focus().extendMarkRange('link').setCustomLink({ href: url })
       .run()
   }, [editor])
 
@@ -57,14 +57,14 @@ export default () => {
 
   return (
     <>
-      <button onClick={setLink} className={editor.isActive('link') ? 'is-active' : ''}>
-        setLink
+      <button onClick={setCustomLink} className={editor.isActive('link') ? 'is-active' : ''}>
+        setCustomLink
       </button>
       <button
-        onClick={() => editor.chain().focus().unsetLink().run()}
+        onClick={() => editor.chain().focus().unsetCustomLink().run()}
         disabled={!editor.isActive('link')}
       >
-        unsetLink
+        unsetCustomLink
       </button>
       <EditorContent editor={editor} />
     </>

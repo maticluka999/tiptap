@@ -41,7 +41,7 @@ context('/src/Examples/AutolinkValidation/React/', () => {
   it('should not relink unset links after entering second link', () => {
     cy.get('.tiptap').type('https://tiptap.dev {home}')
     cy.get('.tiptap').should('have.text', 'https://tiptap.dev ')
-    cy.get('[data-testid=unsetLink]').click()
+    cy.get('[data-testid=unsetCustomLink]').click()
     cy.get('.tiptap')
       .find('a')
       .should('have.length', 0)
@@ -55,7 +55,7 @@ context('/src/Examples/AutolinkValidation/React/', () => {
   it('should not relink unset links after hitting next paragraph', () => {
     cy.get('.tiptap').type('https://tiptap.dev {home}')
     cy.get('.tiptap').should('have.text', 'https://tiptap.dev ')
-    cy.get('[data-testid=unsetLink]').click()
+    cy.get('[data-testid=unsetCustomLink]').click()
     cy.get('.tiptap')
       .find('a')
       .should('have.length', 0)
@@ -68,7 +68,7 @@ context('/src/Examples/AutolinkValidation/React/', () => {
   it('should not relink unset links after modifying', () => {
     cy.get('.tiptap').type('https://tiptap.dev {home}')
     cy.get('.tiptap').should('have.text', 'https://tiptap.dev ')
-    cy.get('[data-testid=unsetLink]').click()
+    cy.get('[data-testid=unsetCustomLink]').click()
     cy.get('.tiptap')
       .find('a')
       .should('have.length', 0)

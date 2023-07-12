@@ -143,7 +143,7 @@ All new extensions come with specific commands to set, unset and toggle styles. 
 | ~~`.heading()`~~         | `.toggleHeading()`              |
 | ~~`.horizontal_rule()`~~ | `.setHorizontalRule()`          |
 | ~~`.italic()`~~          | `.toggleItalic()`               |
-| ~~`.link()`~~            | `.toggleLink()`                 |
+| ~~`.link()`~~            | `.toggleCustomLink()`                 |
 | ~~`.ordered_list()`~~    | `.toggleOrderedList()`          |
 | ~~`.paragraph()`~~       | `.setParagraph()`               |
 | ~~`.strike()`~~          | `.toggleStrike()`               |

@@ -402,7 +402,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * Reduce bundle size of @tiptap/extension-table package by @enriquecastl in https://github.com/ueberdosis/tiptap/pull/2622
 * Update Suggestion package.json by @dphuang2 in https://github.com/ueberdosis/tiptap/pull/2739
 * fix: Support inline nodes with content in @tiptap/suggestion by @thatsjonsense in https://github.com/ueberdosis/tiptap/pull/2648
-* Allow class attribute through setLink() by @Ken-vdE in https://github.com/ueberdosis/tiptap/pull/2758
+* Allow class attribute through setCustomLink() by @Ken-vdE in https://github.com/ueberdosis/tiptap/pull/2758
 * update people by @patrickbaber in https://github.com/ueberdosis/tiptap/pull/2776
 * fix: properly calculate setDragImage position by @dilizarov in https://github.com/ueberdosis/tiptap/pull/2768
 * Ensure VueNodeViewRenderer will use Editor's Global Vue Instance by @ralphschindler in https://github.com/ueberdosis/tiptap/pull/2604

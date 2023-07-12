@@ -119,27 +119,27 @@ Link.configure({
 
 ## Commands
 
-### setLink()
+### setCustomLink()
 Links the selected text.
 
 ```js
-editor.commands.setLink({ href: 'https://example.com' })
-editor.commands.setLink({ href: 'https://example.com', target: '_blank' })
+editor.commands.setCustomLink({ href: 'https://example.com' })
+editor.commands.setCustomLink({ href: 'https://example.com', target: '_blank' })
 ```
 
-### toggleLink()
+### toggleCustomLink()
 Adds or removes a link from the selected text.
 
 ```js
-editor.commands.toggleLink({ href: 'https://example.com' })
-editor.commands.toggleLink({ href: 'https://example.com', target: '_blank' })
+editor.commands.toggleCustomLink({ href: 'https://example.com' })
+editor.commands.toggleCustomLink({ href: 'https://example.com', target: '_blank' })
 ```
 
-### unsetLink()
+### unsetCustomLink()
 Removes a link.
 
 ```js
-editor.commands.unsetLink()
+editor.commands.unsetCustomLink()
 ```
 
 ## Keyboard shortcuts
